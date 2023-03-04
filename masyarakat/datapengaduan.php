@@ -1,7 +1,16 @@
+<?php 
+session_start();
+if($_SESSION['status']!="login"){
+    header("location:../index.php?pesan=belum_login");
+}
+$tanggal = date("Y-m-d");
+
+?>
+
 
 <h4 class="mb-3 mt-3">Data Pengaduan Anda</h4>
 
-<a href="index.php?page=tambahaduan" class="btn btn-primary btn-sm mb-3">+Tambah Pengaduan</a>
+<a class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#exampleModal">+Tambah Pengaduan</a>
 <table class="table">
   <thead>
     <tr>
@@ -30,6 +39,42 @@
       }
     ?>
   </tbody>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <h4 class="mt-2 mb-3">Form Tambah Pengaduan Masyarakat</h4>
+
+      <form action="save_pengaduan.php" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <input type="hidden" name="tgl" class="form-control col-sm-5" id="exampleInputPassword1" value="<?= $tanggal?>">
+          <input type="hidden" name="nik" class="form-control col-sm-5" id="exampleInputPassword1" value="<?= $_SESSION['nik']?>">
+          <label for="exampleInputEmail1">Isi Pengaduan</label>
+          <textarea type="text"  name="isi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Foto</label>
+          <input type="file" name="foto" class="form-control col-sm-5" id="exampleInputPassword1">
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Simpan Pengaduan</button>
+        </div>
+      </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 </table>
 
 
