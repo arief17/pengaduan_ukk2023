@@ -1,9 +1,17 @@
 <?php 
-include 'koneksi.php';
-$nama = $_POST['nama'];
-$kontak = $_POST['kontak'];
-$alamat = $_POST['alamat'];
+// koneksi database
+include '../koneksi.php';
  
+// menangkap data yang di kirim dari form
+$nik = $_POST['nik'];
+$tgl = $_POST['tgl'];
+$isi = $_POST['isi'];
+
+
+
+
+
+
 $rand = rand();
 $ekstensi =  array('png','jpg','jpeg','gif');
 $filename = $_FILES['foto']['name'];
@@ -15,10 +23,11 @@ if(!in_array($ext,$ekstensi) ) {
 }else{
 	if($ukuran < 1044070){		
 		$xx = $rand.'_'.$filename;
-		move_uploaded_file($_FILES['foto']['tmp_name'], 'gambar/'.$rand.'_'.$filename);
-		mysqli_query($koneksi, "INSERT INTO user VALUES(NULL,'$nama','$kontak','$alamat','$xx')");
-		header("location:index.php?alert=berhasil");
+		move_uploaded_file($_FILES['foto']['tmp_name'], '../assets/img/'.$rand.'_'.$filename);
+        mysqli_query($koneksi,"insert into pengaduan values('','$tgl','$nik','$isi','$xx','0')");
+		header("location:index.php?page=datapengaduan");
 	}else{
-		header("location:index.php?alert=gagak_ukuran");
+		header("location:index.php?page=datapengaduan");
 	}
 }
+

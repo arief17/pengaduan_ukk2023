@@ -1,6 +1,6 @@
 
+
 <h4 class="mt-2 mb-3">Form Edit Pengaduan Masyarakat</h4>
-<?= $ds['id'] ?>
 <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Isi Pengaduan</label>

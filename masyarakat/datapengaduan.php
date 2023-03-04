@@ -21,7 +21,7 @@
     ?>
     <tr>
       <th scope="row"><?= $no++ ?></th>
-      <td><a href="index.php?page=editaduan">Edit</a> | <a href="#">Hapus</a></td>
+      <td><a href="#">Edit</a> | <a href="#">Hapus</a> | <a href="#">View</a></td>
       <td><?= $ds['tgl_pengaduan']?></td>
       <td><?= $ds['isi_laporan']?></td>
       <td><?= $ds['status']?></td>
@@ -31,3 +31,5 @@
     ?>
   </tbody>
 </table>
+
+
