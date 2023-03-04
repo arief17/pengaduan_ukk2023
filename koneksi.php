@@ -1,5 +1,5 @@
 <?php 
-$koneksi = mysqli_connect("localhost","root","","pengaduan_masyarakat");
+$koneksi = mysqli_connect("localhost","root","","ukk2023_meri23");
  
 // Check connection
 if (mysqli_connect_errno()){
